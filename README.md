@@ -19,14 +19,14 @@ it). Unfortunatelly t didn't work out and I basically forgot about it until now.
 
 ## How to run
 
-This is simple. Using Java 25 (how surrealistic this is) just type
+This is simple. Using Java 25 (how surrealistic this is) just go to `src` folder and type
 
 ```
    java NetViewer
 ```
 
-When main window pops up, press *Open* and choose a file. I generated (again, with use of AI) 
-a documentation that resembles JavaDoc from JDK 1.1.6 era. Then again *Open 1* (the other button
+When main window pops up, press **Open** and choose a file. I generated (again, with use of AI) 
+a documentation that resembles JavaDoc from JDK 1.1.6 era. Then again **Open 1** (the other button
 does not work for some reason) and you should see the page.
 
 The look and feel of the page remainds me of Netscape Navigator on Sun workstations that we were 
