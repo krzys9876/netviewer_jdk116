@@ -36,7 +36,7 @@ using in Computer Centre in Silesian Technical University. Feels like a visit to
 
 ### Issues
 
-There are probably numerous issues in the code, which is quite unterstandable. I spotted improper scrolling,
+There are probably numerous issues in the code, which is quite understandable. I spotted improper scrolling,
 but hey, it is not about correctness now, rather about Java being (almost) immortal. 
 
 
