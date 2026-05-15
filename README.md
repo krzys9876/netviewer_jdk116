@@ -32,6 +32,8 @@ does not work for some reason) and you should see the page.
 The look and feel of the page remainds me of Netscape Navigator on Sun workstations that we were 
 using in Computer Centre in Silesian Technical University. Feels like a visit to a virtual museum.
 
+<img width="1190" height="993" alt="netviewer_screen" src="https://github.com/user-attachments/assets/a95758c3-012d-4866-aa2d-7d3f99d9e369" />
+
 ### Issues
 
 There are probably numerous issues in the code, which is quite unterstandable. I spotted improper scrolling,
