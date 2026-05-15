@@ -1,0 +1,156 @@
+<html><head><title>NetViewer documentation</title></head>
+<body>
+<h1>NetViewer source documentation</h1>
+<p><img src="images/class-index.gif" width=210 height=38 alt="Class Index"></p>
+
+<p>
+<b>NetViewer</b> is an experimental HTML 3.2 web browser written in pure
+Java 1.1 AWT, dating from 1999. It parses HTML into a linked list of
+element objects, computes a flow layout, renders incrementally on a
+background thread, and supports clickable anchors, images, tables, and
+form widgets.
+</p>
+<p>
+This documentation is itself rendered <i>inside</i> NetViewer, using
+only the tag subset the parser recognises:
+<tt>&lt;p&gt;</tt>, <tt>&lt;h1..h6&gt;</tt>, <tt>&lt;pre&gt;</tt>,
+<tt>&lt;dl&gt; / &lt;dt&gt; / &lt;dd&gt;</tt>, <tt>&lt;table&gt;</tt>,
+<tt>&lt;a&gt;</tt>, <tt>&lt;img&gt;</tt>, <tt>&lt;b&gt;</tt>, <tt>&lt;i&gt;</tt>,
+<tt>&lt;tt&gt;</tt>, <tt>&lt;hr&gt;</tt>.
+</p>
+<p>
+The codebase is organised around a small number of recurring patterns:
+a linked-list document model, an <a href="Elem.html">Elem</a> base class
+with one subclass per supported HTML element, two background threads
+(loading and painting), and a couple of small data-carrier classes that
+travel inside AWT events.
+</p>
+
+<hr><h2>Application</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="NetViewer.html"><b>NetViewer</b></a>
+  <dd>Main application window. A two-pane HTML browser built on AWT. Owns the toolbar, the status bar, and a docPanel containing two independent document views. Entry point: <tt>main(String[])</tt>.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="docPanel.html"><b>docPanel</b></a>
+  <dd>Container that hosts the two document views side by side and dispatches Open / Back / Reload commands from the toolbar to whichever pane has focus.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="mCanvas.html"><b>mCanvas</b></a>
+  <dd>Custom Canvas that displays one parsed document. Fetches the source URL, calls HTMLDoc to parse it, owns the link hit-test map, and starts a RepaintThread for incremental paint.
+</dl>
+<hr><h2>Document model</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="CompElem.html"><b>CompElem</b></a>
+  <dd>Composite element: a TagElem that owns a real AWT Component (button, text field, etc.). Used as a base for the form widgets.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="Elem.html"><b>Elem</b></a>
+  <dd>Base class for every document element. A linked list node holding its element type code, text-style, alignment, link target, and rendered (x, y). Defines the integer type constants used throughout the renderer (TEXT, PARAGRAPH, TABLE, ANCHOR, INPUT, ...).
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="ElemLine.html"><b>ElemLine</b></a>
+  <dd>Helper that groups consecutive Elem nodes into one rendered line, computing the line width, height, and the position where the next line should begin. The core of NetViewer's line-breaking layout.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="HTMLDoc.html"><b>HTMLDoc</b></a>
+  <dd>Parses an HTML source string into a singly-linked list of <a href="Elem.html">Elem</a> objects. The list is the in-memory document model that the renderer walks during paint.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="Tag.html"><b>Tag</b></a>
+  <dd>Represents one HTML tag occurrence: name, attribute hashtable, and a flag for whether it is an opening or closing tag. Built by tokenising the input between &lt; and &gt;.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="TagElem.html"><b>TagElem</b></a>
+  <dd>Common superclass for every element that is created from a parsed tag. Stores the originating Tag and exposes its attributes to subclasses.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="TextElem.html"><b>TextElem</b></a>
+  <dd>Element holding a run of plain text along with its current font/style attributes.
+</dl>
+<hr><h2>HTML element classes</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="BrElem.html"><b>BrElem</b></a>
+  <dd>Implements the <tt>&lt;br&gt;</tt> tag: forces a line break.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="CenterElem.html"><b>CenterElem</b></a>
+  <dd>Implements <tt>&lt;center&gt;</tt>: a DivElem that centres its content horizontally.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="DivElem.html"><b>DivElem</b></a>
+  <dd>Implements the <tt>&lt;div&gt;</tt> tag: a generic block container. Base for table cells and rows in this renderer.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="FontModElem.html"><b>FontModElem</b></a>
+  <dd>Inline font modifier (<tt>&lt;b&gt;</tt>, <tt>&lt;i&gt;</tt>, <tt>&lt;em&gt;</tt>, <tt>&lt;tt&gt;</tt>, <tt>&lt;code&gt;</tt>, ...). Pushes a style change onto subsequent text.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="HrElem.html"><b>HrElem</b></a>
+  <dd>Implements the <tt>&lt;hr&gt;</tt> tag: draws a horizontal rule.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="ImgElem.html"><b>ImgElem</b></a>
+  <dd>Implements the <tt>&lt;img&gt;</tt> tag: loads an image asynchronously and renders it once enough data has arrived.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="PElem.html"><b>PElem</b></a>
+  <dd>Implements the <tt>&lt;p&gt;</tt> tag: a text paragraph with extra vertical spacing.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="ParagraphElem.html"><b>ParagraphElem</b></a>
+  <dd>Container element representing a generic paragraph-level block.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="TextAreaElem.html"><b>TextAreaElem</b></a>
+  <dd>Implements <tt>&lt;textarea&gt;</tt>: wraps an AWT TextArea inside the document flow.
+</dl>
+<hr><h2>Tables</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="TabDatElem.html"><b>TabDatElem</b></a>
+  <dd>Implements <tt>&lt;td&gt;</tt>: one ordinary data cell.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="TabHeadElem.html"><b>TabHeadElem</b></a>
+  <dd>Implements <tt>&lt;th&gt;</tt>: a header cell; a TabDatElem that draws its content in bold and centred.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="TableElem.html"><b>TableElem</b></a>
+  <dd>Implements <tt>&lt;table&gt;</tt>. Holds rows, performs cell sizing, and draws borders.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="TrElem.html"><b>TrElem</b></a>
+  <dd>Implements <tt>&lt;tr&gt;</tt>: one table row, a DivElem subclass.
+</dl>
+<hr><h2>Forms</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="InputElem.html"><b>InputElem</b></a>
+  <dd>Implements <tt>&lt;input&gt;</tt>: text, password, checkbox, radio, submit, reset, or hidden, switched on the TYPE attribute.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="OptionElem.html"><b>OptionElem</b></a>
+  <dd>Implements <tt>&lt;option&gt;</tt>: one entry inside a SelectElem.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="SelectElem.html"><b>SelectElem</b></a>
+  <dd>Implements <tt>&lt;select&gt;</tt>: a drop-down list whose options are added by child OptionElems.
+</dl>
+<hr><h2>Anchors and links</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="AnchorArgs.html"><b>AnchorArgs</b></a>
+  <dd>Argument bundle passed when registering a new anchor with the document during parsing.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="AnchorData.html"><b>AnchorData</b></a>
+  <dd>Stored anchor record: name plus the y coordinate to scroll to when the anchor is targeted.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="AnchorElem.html"><b>AnchorElem</b></a>
+  <dd>Implements <tt>&lt;a&gt;</tt>. Holds HREF (link target) and NAME (anchor) and toggles link styling on the contained text.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="AnchorList.html"><b>AnchorList</b></a>
+  <dd>Collection of <a href="AnchorData.html">AnchorData</a> entries: the document's index of named anchors.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="LinkArea.html"><b>LinkArea</b></a>
+  <dd>Collection of LinkRects: the document's hit-test map. Used by mouse handlers to detect which link was clicked or hovered.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="LinkRect.html"><b>LinkRect</b></a>
+  <dd>One clickable rectangle within a rendered link, with the URL it points to.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="RegLinkArgs.html"><b>RegLinkArgs</b></a>
+  <dd>Argument bundle for registering a new clickable region while the renderer walks the document.
+</dl>
+<hr><h2>Image handling</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="ImgElemData.html"><b>ImgElemData</b></a>
+  <dd>Metadata for one image: URL, requested width and height, attribute string. Persists even before pixels arrive.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="ImgElemList.html"><b>ImgElemList</b></a>
+  <dd>List of <a href="ImgElem.html">ImgElem</a> objects currently loading; lets the renderer ask 'is everything in?' before declaring layout final.
+</dl>
+<hr><h2>UI components</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="LoadLocData.html"><b>LoadLocData</b></a>
+  <dd>Event payload requesting that the canvas load a new URL.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="OpenDialog.html"><b>OpenDialog</b></a>
+  <dd>Modal 'Open Location' dialog with a URL text field plus a Browse button that pops a native FileDialog.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="OpenDialogBuf.html"><b>OpenDialogBuf</b></a>
+  <dd>Result buffer for OpenDialog: which button was pressed, the chosen location, and the last-used directory.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="RegLocData.html"><b>RegLocData</b></a>
+  <dd>Event payload registering the URL of the document currently being loaded.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="StatusBar.html"><b>StatusBar</b></a>
+  <dd>Bottom status line: a Canvas that draws a single string with a sunken 3D border.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="StatusBarData.html"><b>StatusBarData</b></a>
+  <dd>Wrapper carrying the new status message as an AWT Event payload.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="TitleData.html"><b>TitleData</b></a>
+  <dd>Event payload used to tell the frame to update its window title from a parsed &lt;title&gt; tag.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="Toolbar.html"><b>Toolbar</b></a>
+  <dd>Top button bar (Open, Back, Reload, ...). A FlowLayout Panel.
+</dl>
+<hr><h2>Background threads</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="LoaderThread.html"><b>LoaderThread</b></a>
+  <dd>Reads bytes from an InputStream in the background, appending them to a growing buffer. Cooperatively cancellable via interrupt().
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="RepaintThread.html"><b>RepaintThread</b></a>
+  <dd>Walks the element list and paints each visible Elem. Cooperatively cancellable so a fresh paint can pre-empt a stale one.
+</dl>
+<hr><h2>Utilities</h2>
+<dl>
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="Array.html"><b>Array</b></a>
+  <dd>Plain 2-D array of Objects with bounds-checked accessors. Used to back table cell grids.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="Graph.html"><b>Graph</b></a>
+  <dd>Static helpers for drawing 3D-styled rectangles (raised/sunken) of arbitrary border thickness.
+  <dt><img src="images/green-ball-small.gif" width=6 height=6 alt=" o "> <a href="Props.html"><b>Props</b></a>
+  <dd>Application-wide properties: font table per text style, special-character glyph table, on-disk page cache. Owned by an mCanvas.
+</dl>
+<hr><p><a href="hierarchy.html">Class hierarchy</a></p>
+</body></html>

@@ -1,0 +1,95 @@
+<html><head><title>Class mCanvas</title></head>
+<body>
+<pre><a href="index.html">Index</a>   <a href="hierarchy.html">Class Hierarchy</a></pre>
+<h1>Class mCanvas</h1>
+<pre>
+java.lang.Object
+   |
+   +----java.awt.Panel
+          |
+          +----<a href="mCanvas.html">mCanvas</a>
+</pre>
+<dl>
+  <dt> public class <b>mCanvas</b>
+  <dt> extends java.awt.Panel
+</dl>
+<p>Custom Canvas that displays one parsed document. Fetches the source URL, calls HTMLDoc to parse it, owns the link hit-test map, and starts a RepaintThread for incremental paint.</p>
+<dl><dt><b>Category:</b><dd>Application</dl>
+<h2><img src="images/constructor-index.gif" width=275 height=38 alt="Constructor Index"></h2>
+<dl>
+  <dt> <img src="images/yellow-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="mCanvas.html">mCanvas</a>(int, int)</tt>
+</dl>
+<h2><img src="images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<dl>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public boolean mouseExit(java.awt.Event, int, int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public boolean mouseMove(java.awt.Event, int, int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public boolean mouseDown(java.awt.Event, int, int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void setTitle(java.lang.String)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void load(java.lang.String)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>private byte[] getDoc(java.net.URL)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>private void format(java.lang.String)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void init()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void paint(java.awt.Graphics)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>private void rep(java.awt.Graphics)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public boolean imageUpdate(java.awt.Image, int, int, int, int, int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public java.lang.String makeLoc(java.lang.String)</tt>
+</dl>
+<h2><img src="images/variable-index.gif" width=265 height=38 alt="Variable Index"></h2>
+<dl>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int docHeight</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int docWidth</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int originX</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int originY</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>java.lang.String docLoc</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>java.lang.String docRef</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>java.lang.String docServ</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>java.lang.String docFile</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>boolean initflag</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>boolean formatflag</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="Props.html">Props</a> props</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="LinkRect.html">LinkRect</a> mouseOnLink</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="LinkArea.html">LinkArea</a> larea</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="ImgElemList.html">ImgElemList</a> imglist</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="AnchorList.html">AnchorList</a> anchlist</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>java.lang.String title</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="RepaintThread.html">RepaintThread</a> repthread</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int docw</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int doch</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="HTMLDoc.html">HTMLDoc</a> doc</tt>
+</dl>
+<hr>
+<pre><a href="index.html">Index</a>   <a href="hierarchy.html">Class Hierarchy</a></pre>
+</body></html>

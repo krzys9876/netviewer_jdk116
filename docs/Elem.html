@@ -1,0 +1,256 @@
+<html><head><title>Class Elem</title></head>
+<body>
+<pre><a href="index.html">Index</a>   <a href="hierarchy.html">Class Hierarchy</a></pre>
+<h1>Class Elem</h1>
+<pre>
+Elem
+</pre>
+<dl>
+  <dt> class <b>Elem</b>
+</dl>
+<p>Base class for every document element. A linked list node holding its element type code, text-style, alignment, link target, and rendered (x, y). Defines the integer type constants used throughout the renderer (TEXT, PARAGRAPH, TABLE, ANCHOR, INPUT, ...).</p>
+<dl><dt><b>Category:</b><dd>Document model</dl>
+<h2><img src="images/constructor-index.gif" width=275 height=38 alt="Constructor Index"></h2>
+<dl>
+  <dt> <img src="images/yellow-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="Elem.html">Elem</a>(int, <a href="Tag.html">Tag</a>, boolean)</tt>
+  <dt> <img src="images/yellow-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="Elem.html">Elem</a>(int, <a href="Tag.html">Tag</a>)</tt>
+  <dt> <img src="images/yellow-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="Elem.html">Elem</a>(<a href="Tag.html">Tag</a>, boolean)</tt>
+  <dt> <img src="images/yellow-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="Elem.html">Elem</a>(int, boolean)</tt>
+  <dt> <img src="images/yellow-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="Elem.html">Elem</a>(int)</tt>
+</dl>
+<h2><img src="images/method-index.gif" width=207 height=38 alt="Method Index"></h2>
+<dl>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void setLink(java.lang.String)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public java.lang.String getLink()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void format()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void init0()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void init(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public java.lang.Object ge()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void se(java.lang.Object)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public <a href="Elem.html">Elem</a> gn()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public synchronized void sn(<a href="Elem.html">Elem</a>)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public int getType()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void setType(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public int getAlign()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void setAlign(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public int getValign()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void setValign(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void setTexttype(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void modTexttype(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void setMod(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public int getMod()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public final int getTexttype()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public final int getWidth()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public final int getHeight()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public final void setWidth(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public final void setHeight(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public final int getAsc()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public final int getDesc(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public boolean newLine()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public int gWidth()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public int gHeight()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void sWidth(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void sHeight(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public int gAsc()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public int gDesc(int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public java.awt.Rectangle getBounds()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void registerLink()</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void checkEnable(java.awt.Rectangle)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void initComp(java.awt.Rectangle)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void setXY(int, int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void translate(int, int)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public final void redraw(java.awt.Graphics)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public void draw(java.awt.Graphics)</tt>
+  <dt> <img src="images/red-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public boolean isLink()</tt>
+</dl>
+<h2><img src="images/variable-index.gif" width=265 height=38 alt="Variable Index"></h2>
+<dl>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>java.lang.Object elem</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt><a href="Elem.html">Elem</a> next</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int type</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int texttype</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int align</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int valign</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>boolean newLn</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>java.lang.String linkloc</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>boolean enabled</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int x</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>int y</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int NOTHING</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TAG</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TEXT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int PARAGRAPH</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int DIV</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int CENTERPAR</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int FONTMOD</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int HR</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int IMG</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TABLE</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TABROW</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TABDAT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int ANCHOR</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int SELECT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TEXTAREA</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int INPUT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int INPUTTEXT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int INPUTPASS</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int INPUTCHECK</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int INPUTRADIO</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int INPUTSUBMIT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int INPUTRESET</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int INPUTHIDDEN</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int OPTION</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int ENDS</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int NORMAL</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int H1</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int H2</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int H3</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int H4</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int H5</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int H6</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TABHEADER</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int PRE</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int NOMOD</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int B</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int DFN</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int STRONG</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int I</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int ADDRESS</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int EM</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int VAR</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int BIG</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int CODE</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int KBD</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int SMALL</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int DEFAULT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int LEFT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int RIGHT</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int CENTER</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int TOP</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int BOTTOM</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int MIDDLE</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int BASELINE</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int ABSMIDDLE</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>public static int ABSBOTTOM</tt>
+  <dt> <img src="images/blue-ball-small.gif" width=6 height=6 alt=" o ">
+       <tt>static {}</tt>
+</dl>
+<hr>
+<pre><a href="index.html">Index</a>   <a href="hierarchy.html">Class Hierarchy</a></pre>
+</body></html>
