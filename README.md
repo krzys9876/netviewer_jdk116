@@ -12,7 +12,7 @@ repainting, I was able to actually run it and travel in time almost 30 years bac
 ## Net Viewer
 
 The NetViewer browser was supposed to be an educational exercise. First and foremost I wanted
-just to write a decent browser that would be able to display an average page from that time. 
+to write a decent browser that would be able to display an average page from that time. 
 I remember that it was a bit of a race against progress in Web tech stack. Secondly I wanted 
 to describe what I had learned in a form of a book (I wrote one before so I knew how to tackle
 it). Unfortunatelly t didn't work out and I basically forgot about it until now.
