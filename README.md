@@ -1,7 +1,7 @@
-# Too cool to be true
+# Write once, run... after 30 years!
 
 This is just crazy! While preparing to a lecture about Java and programming in general
-I came across my old Java code from 1997 or 1998 (yes, don't bother file timestamps) that I abandoned
+I came across my old Java code from 1997 or 1998 (can't tell for sure) that I abandoned
 just before I graduated from my university.
 
 Back then I've had an idea to write my own simplistic web browser, which at that time meant
@@ -22,6 +22,7 @@ it). Unfortunatelly t didn't work out and I basically forgot about it until now.
 This is simple. Using Java 25 (how surrealistic this is) just go to `src` folder and type
 
 ```
+   javac NetViewer.java
    java NetViewer
 ```
 
